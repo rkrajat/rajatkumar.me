@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-family-heading: "Gabarito Variable", system-ui;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(to right, #f43f5e, #db2777, #ef4444);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-text-link {
+    background: linear-gradient(to right, #aedd84, #53ccb6, #43dd4b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+html,
+body {
+  @apply antialiased font-base;
+  font-size: 1rem;
+}
+
+/* Markdown Styles */
+.markdown {
+  @apply font-base;
+  line-height: 28px;
+}
+
+.markdown p {
+  @apply pb-8;
+}
+
+.markdown a {
+  @apply border-b-[1px] gradient-text-link;
+}
+
+.markdown hr {
+  @apply pt-8 opacity-60 dark:opacity-10;
+}
+
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5 {
+  @apply font-heading;
+}
+
+.markdown h2 {
+  @apply mt-2 pb-8 text-3xl font-semibold gradient-text;
+}
+
+.markdown h3 {
+  @apply mt-2 pb-8 text-2xl font-semibold gradient-text;
+}
+
+.markdown h4 {
+  @apply mt-2 pb-8 text-xl font-semibold gradient-text;
+}
+
+.markdown h5 {
+  @apply mt-2 pb-4 text-base font-semibold gradient-text;
+}
+
+.markdown blockquote {
+  @apply relative -left-2 -ml-4 mb-8 pl-4;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.markdown blockquote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, #f43f5e, #db2777, #ef4444);
+}
+
+.markdown blockquote p {
+  margin: 0;
+  padding: 0;
+}
+
+.markdown p img {
+  margin-bottom: 0;
+}
+
+.markdown ul {
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 1.75rem;
+  list-style-position: outside;
+  list-style-image: none;
+  list-style: disc;
+}
+
+.markdown li {
+  margin-bottom: calc(1.75rem / 2);
+}
+
+.markdown img {
+  @apply mb-8;
+  max-width: 100%;
+}

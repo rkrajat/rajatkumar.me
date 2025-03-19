@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+---
+
+<header>
+  <h1
+    class="text-3xl font-heading text-center mb-8 font-bold lg:text-4xl md:text-left"
+  >
+    Hey there, I'm Rajat! <span class="waving-hand">👋</span>
+  </h1>
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+    <div class="col-span-1 xl:col-span-3 xl:mr-6">
+      <p class="intro-text">
+        A software engineer living in Berlin with a passion for running, staying
+        active, and exploring new ideas. I’ve always been into sports, with
+        football being a long-time favorite, and recently, developing an
+        interest in mindfulness and reflective writing.
+      </p>
+
+      <p class="intro-text">
+        Lately, I’ve been enjoying a good cup of coffee, getting into podcasts
+        and books that challenge my thinking, which led me to start putting my
+        thoughts together here.
+      </p>
+
+      <p class="intro-text">
+        This is a space for me to share and explore different topics — tech,
+        sports, mindfulness and beyond. Whatever catches my curiosity — without
+        a fixed theme, letting curiosity lead the way.
+      </p>
+    </div>
+    <Image
+      src="/avatar.webp"
+      alt="Rajat Kumar"
+      width={200}
+      height={200}
+      class="hidden xl:block rounded-md"
+    />
+  </div>
+</header>
+
+<style>
+  .intro-text {
+    @apply mb-4 leading-relaxed;
+  }
+
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .waving-hand {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: 2;
+    transform-origin: 70% 70%;
+    display: inline-block;
+  }
+</style>

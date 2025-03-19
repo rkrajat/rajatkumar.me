@@ -1,0 +1,41 @@
+---
+const NAVIGATION_ROUTES = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "Articles",
+    url: "/articles",
+  },
+  {
+    name: "About",
+    url: "/about",
+  },
+];
+---
+
+<header
+  class="font-heading fixed top-0 left-0 w-full z-50 bg-zinc-900/30 backdrop-blur-md py-4 border-b border-white/10"
+>
+  <div
+    class="flex flex-col sm:flex-row justify-between items-center sm:mx-20 lg:mx-40"
+  >
+    <a href="/" class="text-sm disable-link">
+      <h1 class="gradient-text text-xl mb-4 sm:mb-0">Rajat Kumar</h1>
+    </a>
+    <nav>
+      <ul class="flex space-x-6">
+        {
+          NAVIGATION_ROUTES.map((route) => (
+            <li>
+              <a href={route.url} class=" text-gray-300  hover:gradient-text">
+                {route.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

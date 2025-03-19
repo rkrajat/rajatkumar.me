@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import PostSidebar from "./PostSidebar.astro";
+
+interface Props {
+  post: CollectionEntry<"blogPosts">;
+}
+
+const { post } = Astro.props;
+const { Content: BlogContent, remarkPluginFrontmatter } = await render(post);
+const { src: imageSrc, alt } = post.data.heroImage || {};
+---
+
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
+  <main class="col-span-3">
+    <!-- hero image -->
+    {
+      Boolean(imageSrc) && (
+        <div class="mb-8 xl:mb-12">
+          <Image
+            src={imageSrc as string}
+            alt={alt ?? "Image"}
+            width={1000}
+            height={1000}
+            class="shadow-lg aspect-auto object-cover rounded-lg"
+          />
+        </div>
+      )
+    }
+
+    <!-- heading and published date-->
+    <div
+      class="gradient-text flex justify-between flex-row border-b border-white/30 pb-4 xl:hidden"
+    >
+      <h1 class="font-heading font-semibold text-3xl sm:text-xxl">
+        {post.data.title}
+        <p class="text-xs font-semibold sm:text-sm mt-3">
+          {remarkPluginFrontmatter.minutesRead}
+        </p>
+      </h1>
+
+      <p class="text-xs font-semibold sm:text-sm mt-3">
+        {
+          new Date(post.data.publishedDate).toLocaleDateString("en", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })
+        }
+      </p>
+    </div>
+
+    <!-- post content -->
+    <div class="markdown px-2 my-4 sm:px-0">
+      <BlogContent />
+    </div>
+
+    <!-- back button -->
+    <a
+      href="/"
+      class="gradient-text px-4 py-2 rounded hover:gradient-text-link"
+    >
+      ← Home
+    </a>
+  </main>
+
+  <!-- post sidebar (desktop only) -->
+  <PostSidebar
+    title={post.data.title}
+    status={post.data.status}
+    publishedDate={post.data.publishedDate}
+    timeToRead={remarkPluginFrontmatter.minutesRead}
+    tags={post.data.tags}
+  />
+</div>
