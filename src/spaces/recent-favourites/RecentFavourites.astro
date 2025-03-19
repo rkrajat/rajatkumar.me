@@ -1,0 +1,54 @@
+---
+const RECENT_FAVS = {
+  podcasts: [
+    {
+      name: "Harvard Mindfulness Professor: The INSANE Ways Your Thoughts Control Your Health | Dr. Ellen Langer",
+      url: "https://www.youtube.com/watch?v=0qKcoP-g1a4",
+    },
+    {
+      name: "Joe Rogan Experience #2234 - Marc Andreessen",
+      url: "https://www.youtube.com/watch?v=ye8MOfxD5nU",
+    },
+  ],
+  posts: [
+    {
+      name: "The Tail End",
+      url: "https://waitbutwhy.com/2015/12/the-tail-end.html",
+    },
+  ],
+  movies: [{ name: "Anora", url: "https://www.imdb.com/title/tt28607951/" }],
+};
+---
+
+<div class="grid grid-cols-1 gap-8 text-gray-200">
+  {
+    Object.entries(RECENT_FAVS).map(([category, items]) => (
+      <div>
+        <strong class="text-lg gradient-text capitalize pl-4">
+          {category}
+        </strong>
+        <ul class="relative ">
+          {items.map((item) => (
+            <li class="relative pl-4 mb-2 text-sm">
+              <a
+                href={item.url}
+                class="hover:gradient-text-link underline underline-offset-4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  li::before {
+    content: "";
+    @apply absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-current rounded-full;
+  }
+</style>

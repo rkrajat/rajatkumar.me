@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  status: string;
+  publishedDate: Date;
+  tags: string[] | undefined;
+  timeToRead: string;
+}
+
+const { title, status, publishedDate, tags, timeToRead } = Astro.props;
+---
+
+<aside
+  class="p-6 h-screen sticky top-24 hidden xl:block border-l border-white/10 font-semibold"
+>
+  <h1 class="font-heading gradient-text text-3xl sm:text-xxl">
+    {title}
+  </h1>
+  <h3 class="capitalize">{status}</h3>
+  <!-- Published Date -->
+  <div class="mb-4">
+    <div class="mt-4">
+      <p class="text-sm gradient-text">
+        {
+          new Date(publishedDate).toLocaleDateString("en", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })
+        }
+      </p>
+      <p class="text-xs sm:text-sm mt-3">
+        {timeToRead}
+      </p>
+    </div>
+  </div>
+
+  <hr class="border-white/20 my-4" />
+
+  <!-- Tags -->
+  {
+    tags?.length ? (
+      <div>
+        <h2 class="text-lg font-semibold mb-2">Topics</h2>
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    ) : null
+  }
+</aside>

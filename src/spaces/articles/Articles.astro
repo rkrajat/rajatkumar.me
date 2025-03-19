@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts = (await getCollection("blogPosts")).sort(
+  (a, b) =>
+    new Date(b.data.publishedDate).getTime() -
+    new Date(a.data.publishedDate).getTime()
+);
+---
+
+<section>
+  {
+    allPosts.map(({ data, id }) => (
+      <article class="py-2 border-b border-white/10 hover:shadow-xl cursor-pointer transform hover:scale-[1.01] transition-transform duration-300 ease-in-out pointer-events-auto hover:gradient-text-link">
+        <a href={`/${id}`}>
+          <div class="flex items-center justify-between px-4">
+            <div class="col-span-3">
+              <h1>{data.title}</h1>
+            </div>
+            <p class="text-sm gradient-text">
+              {new Date(data.publishedDate).toLocaleDateString("en", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+        </a>
+      </article>
+    ))
+  }
+</section>

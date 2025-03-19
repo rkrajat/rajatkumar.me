@@ -1,0 +1,38 @@
+---
+const CURRENTLY_READING = [
+  {
+    name: "The Power of Now",
+    url: "https://www.goodreads.com/book/show/6708.The_Power_of_Now",
+  },
+  {
+    name: "How to Get Rich",
+    url: "https://nav.al/rich",
+  },
+];
+---
+
+<ul class="relative">
+  {
+    CURRENTLY_READING.map(({ name, url }) => (
+      <div>
+        <li class="relative pl-4 mb-2 text-sm">
+          <a
+            href={url}
+            class="hover:gradient-text-link underline underline-offset-4"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {name}
+          </a>
+        </li>
+      </div>
+    ))
+  }
+</ul>
+
+<style>
+  li::before {
+    content: "";
+    @apply absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-current rounded-full;
+  }
+</style>
