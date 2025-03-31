@@ -1,8 +1,8 @@
 ---
 title: Why I Run
 description: How It All Started & Why I Keep Chasing Miles & Meaning
-publishedDate: 2025-03-18T12:25:16.072Z
-updatedDate: 2025-03-18T12:25:16.072Z
+publishedDate: 2025-03-31T10:25:16.072Z
+updatedDate: 2025-03-31T10:25:16.072Z
 status: draft
 heroImage:
   src: /running.jpg
