@@ -1,38 +1,39 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
 interface Props {
-  title: string;
-  status: string;
-  publishedDate: Date;
-  tags: string[] | undefined;
+  post: CollectionEntry<"blogPosts">;
   timeToRead: string;
 }
 
-const { title, status, publishedDate, tags, timeToRead } = Astro.props;
+const { post, timeToRead } = Astro.props;
+const { title, status, publishedDate, tags, description } = post.data;
 ---
 
 <aside
   class="p-6 h-screen sticky top-24 hidden xl:block border-l border-white/10 font-semibold"
 >
+  <!-- title and description -->
   <h1 class="font-heading gradient-text text-3xl sm:text-xxl">
     {title}
   </h1>
-  <h3 class="capitalize">{status}</h3>
-  <!-- Published Date -->
-  <div class="mb-4">
-    <div class="mt-4">
-      <p class="text-sm gradient-text">
-        {
-          new Date(publishedDate).toLocaleDateString("en", {
-            day: "numeric",
-            month: "short",
-            year: "numeric",
-          })
-        }
-      </p>
-      <p class="text-xs sm:text-sm mt-3">
-        {timeToRead}
-      </p>
-    </div>
+  {description && <p class="text-sm text-zinc-400 mt-1">{description}</p>}
+
+  <!-- status, publishedDate, timeToRead -->
+  <div class="grid grid-cols-1 gap-2 my-4">
+    <h3 class="capitalize">{status}</h3>
+    <span class="text-sm gradient-text">
+      {
+        new Date(publishedDate).toLocaleDateString("en", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
+      }
+    </span>
+    <span class="text-xs sm:text-sm">
+      {timeToRead}
+    </span>
   </div>
 
   <hr class="border-white/20 my-4" />

@@ -68,11 +68,5 @@ const { src: imageSrc, alt } = post.data.heroImage || {};
   </main>
 
   <!-- post sidebar (desktop only) -->
-  <PostSidebar
-    title={post.data.title}
-    status={post.data.status}
-    publishedDate={post.data.publishedDate}
-    timeToRead={remarkPluginFrontmatter.minutesRead}
-    tags={post.data.tags}
-  />
+  <PostSidebar post={post} timeToRead={remarkPluginFrontmatter.minutesRead} />
 </div>

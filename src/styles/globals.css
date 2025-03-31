@@ -38,11 +38,11 @@ body {
 }
 
 .markdown p {
-  @apply pb-8;
+  @apply pb-6;
 }
 
 .markdown a {
-  @apply border-b-[1px] gradient-text-link;
+  @apply border-b-[1px] gradient-text-link hover:border-b-0;
 }
 
 .markdown hr {
@@ -57,15 +57,15 @@ body {
 }
 
 .markdown h2 {
-  @apply mt-2 pb-8 text-3xl font-semibold gradient-text;
+  @apply mt-2 pb-6 text-3xl font-semibold gradient-text;
 }
 
 .markdown h3 {
-  @apply mt-2 pb-8 text-2xl font-semibold gradient-text;
+  @apply pb-6 text-2xl font-semibold gradient-text;
 }
 
 .markdown h4 {
-  @apply mt-2 pb-8 text-xl font-semibold gradient-text;
+  @apply pb-6 text-xl font-semibold gradient-text;
 }
 
 .markdown h5 {
@@ -73,7 +73,7 @@ body {
 }
 
 .markdown blockquote {
-  @apply relative -left-2 -ml-4 mb-8 pl-4;
+  @apply relative -left-4  mb-8 pl-4;
   font-style: italic;
   opacity: 0.8;
 }
@@ -109,10 +109,14 @@ body {
 }
 
 .markdown li {
-  margin-bottom: calc(1.75rem / 2);
+  @apply mb-2;
 }
 
 .markdown img {
   @apply mb-8;
   max-width: 100%;
+}
+
+.markdown details summary {
+  @apply hover:cursor-pointer;
 }
