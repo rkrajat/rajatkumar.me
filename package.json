@@ -13,6 +13,7 @@
     "@astrojs/tailwind": "^5.1.4",
     "@fontsource-variable/gabarito": "^5.2.5",
     "@fontsource-variable/inter": "^5.2.5",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^5.1.2",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
